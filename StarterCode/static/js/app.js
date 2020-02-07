@@ -4,8 +4,7 @@ var tableData = data;
 // YOUR CODE HERE!
 tbody = d3.select("tbody")
 
-// using Object.entries to get key, value data inside of the table
-// and loop through them to add to the table in html
+// get key, value data to the table and loop through to add 
 function displayData(data){ 
     tbody.text("")
     data.forEach(function(sighting){
@@ -17,20 +16,20 @@ function displayData(data){
 
 displayData(tableData)
 
-//select the web user's input and the filter button
+//select the input and the filter button
 var dateInputText = d3.select("#datetime")
 var button = d3.select("filter-btn")
 
 function clickSelect(){
-    //don't refresh the page!
+   
     d3.event.preventDefault();
-    //print the value that was input
+    //print the input
     console.log(dateInputText.property("value"));
-    //create a new table showing only the filterd data
+    //new table showing the filterd data
     var new_table = tableData.filter(sighting => sighting.datetime===dateInputText.property("value"))
-    //display the new table
+    //display new
     displayData(new_table);
 }
 
-// event listener to handle change and click
+//listener to handle change and click
 dateInputText.on("change", clickSelect)
